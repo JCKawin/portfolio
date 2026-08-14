@@ -1,54 +1,54 @@
 @property --g0 {
   syntax: '<color>';
   inherits: true;
-  initial-value: #6b1016;
+  initial-value: #050203;
 }
 
 @property --g1 {
   syntax: '<color>';
   inherits: true;
-  initial-value: #8f141c;
+  initial-value: #14070a;
 }
 
 @property --g2 {
   syntax: '<color>';
   inherits: true;
-  initial-value: #b41620;
+  initial-value: #3a1016;
 }
 
 @property --g3 {
   syntax: '<color>';
   inherits: true;
-  initial-value: #d41b26;
+  initial-value: #7a1a24;
 }
 
 @property --g4 {
   syntax: '<color>';
   inherits: true;
-  initial-value: #ef2a34;
+  initial-value: #c41e2c;
 }
 
 @property --glow {
   syntax: '<color>';
   inherits: true;
-  initial-value: #e6222c;
+  initial-value: #d42734;
 }
 
 @property --haze {
   syntax: '<color>';
   inherits: true;
-  initial-value: #8a0d16;
+  initial-value: #5c121a;
 }
 
 .stage {
-  --g0: #6b1016;
-  --g1: #8f141c;
-  --g2: #b41620;
-  --g3: #d41b26;
-  --g4: #ef2a34;
-  --glow: #e6222c;
-  --haze: #8a0d16;
-  --shadow: 140, 18, 24;
+  --g0: #050203;
+  --g1: #14070a;
+  --g2: #3a1016;
+  --g3: #7a1a24;
+  --g4: #c41e2c;
+  --glow: #d42734;
+  --haze: #5c121a;
+  --shadow: 80, 12, 18;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-in: cubic-bezier(0.64, 0, 0.78, 0);
   --swap: 780ms;
@@ -64,8 +64,8 @@
   background: linear-gradient(
     180deg,
     var(--g0) 0%,
-    var(--g1) 28%,
-    var(--g2) 55%,
+    var(--g1) 22%,
+    var(--g2) 52%,
     var(--g3) 78%,
     var(--g4) 100%
   );
@@ -80,14 +80,25 @@
 }
 
 .stage[data-theme='blue'] {
-  --g0: #1236b0;
-  --g1: #1644d0;
-  --g2: #1a58e8;
-  --g3: #2b6dff;
-  --g4: #4d88ff;
-  --glow: #5b94ff;
-  --haze: #1a4ad4;
-  --shadow: 20, 56, 180;
+  --g0: #03050c;
+  --g1: #07101c;
+  --g2: #0e2044;
+  --g3: #17397a;
+  --g4: #1e56c8;
+  --glow: #3d74e0;
+  --haze: #122a5c;
+  --shadow: 12, 32, 90;
+}
+
+.stage[data-theme='green'] {
+  --g0: #030805;
+  --g1: #07140c;
+  --g2: #0d2818;
+  --g3: #146338;
+  --g4: #1a8f4c;
+  --glow: #28b05c;
+  --haze: #0e3a22;
+  --shadow: 10, 48, 28;
 }
 
 .stage::before,
@@ -102,79 +113,107 @@
 .stage::before {
   background:
     radial-gradient(
-      ellipse 120% 55% at 50% 112%,
-      color-mix(in srgb, var(--glow) 80%, transparent) 0%,
-      color-mix(in srgb, var(--g3) 40%, transparent) 38%,
-      transparent 70%
-    ),
-    radial-gradient(
-      ellipse 50% 28% at 50% 100%,
-      color-mix(in srgb, var(--g4) 45%, transparent) 0%,
-      transparent 62%
+      ellipse 130% 58% at 50% 118%,
+      color-mix(in srgb, var(--glow) 62%, transparent) 0%,
+      color-mix(in srgb, var(--g3) 28%, transparent) 42%,
+      transparent 72%
     );
-  animation: ember-breathe 7s ease-in-out infinite;
+  animation: ember-breathe 9s ease-in-out infinite;
 }
 
 .stage::after {
-  background:
-    radial-gradient(
-      ellipse 70% 40% at 50% 0%,
-      color-mix(in srgb, var(--g0) 55%, transparent) 0%,
-      transparent 68%
-    ),
-    radial-gradient(
-      ellipse 40% 50% at 18% 70%,
-      color-mix(in srgb, var(--haze) 22%, transparent) 0%,
-      transparent 70%
-    ),
-    radial-gradient(
-      ellipse 38% 48% at 82% 68%,
-      color-mix(in srgb, var(--haze) 18%, transparent) 0%,
-      transparent 70%
-    );
-  animation: haze-drift 16s ease-in-out infinite alternate;
+  background: radial-gradient(
+    ellipse 90% 52% at 50% -8%,
+    #000 0%,
+    transparent 70%
+  );
+  animation: haze-drift 18s ease-in-out infinite alternate;
 }
 
 .wordmark {
   position: absolute;
-  top: 16%;
-  left: 50%;
+  inset: 0;
   z-index: 1;
   margin: 0;
-  transform: translate(-50%, -42vh);
-  opacity: 0;
-  font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5vw;
   font-weight: 500;
-  font-style: italic;
-  font-size: clamp(72px, 16vw, 220px);
-  letter-spacing: 0.02em;
-  line-height: 0.8;
-  white-space: nowrap;
+  color: #f6f3ee;
   user-select: none;
   pointer-events: none;
-  background: linear-gradient(
-    185deg,
-    #ffffff 0%,
-    #fff6f6 28%,
-    #f0c8c8 58%,
-    rgba(196, 20, 30, 0.35) 82%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  filter: drop-shadow(0 8px 28px rgba(0, 0, 0, 0.35));
+  opacity: 0;
+  transform: translateY(-32vh);
   transition:
     transform var(--swap) var(--ease-in),
     opacity 420ms ease;
 }
 
 .wordmark.is-in {
-  transform: translate(-50%, 0);
   opacity: 1;
+  transform: translateY(0);
   transition:
     transform var(--swap) var(--ease-out),
     opacity 520ms ease 80ms;
+}
+
+.wordmark-side {
+  display: block;
+  line-height: 0.85;
+  white-space: nowrap;
+}
+
+.wordmark-side--left {
+  font-family: Cinzel, 'Times New Roman', serif;
+  font-weight: 600;
+  font-size: clamp(72px, 11vw, 168px);
+  letter-spacing: 0.08em;
+}
+
+.wordmark-side--right {
+  display: inline-flex;
+  align-items: baseline;
+  min-width: 4.2em;
+  justify-content: flex-end;
+  font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(56px, 7.5vw, 112px);
+  letter-spacing: 0.04em;
+}
+
+.wordmark-side--right[data-script='tamil'] {
+  font-family: 'Noto Serif Tamil', 'Noto Serif', serif;
+  font-style: normal;
+  letter-spacing: 0.02em;
+}
+
+.wordmark-side--right[data-script='hindi'] {
+  font-family: 'Noto Serif Devanagari', 'Noto Serif', serif;
+  font-style: normal;
+  letter-spacing: 0.02em;
+}
+
+.wordmark-side--right[data-script='russian'] {
+  font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+  font-style: italic;
+}
+
+.wordmark-caret {
+  display: inline-block;
+  width: 0.055em;
+  height: 0.78em;
+  margin-left: 0.08em;
+  background: currentColor;
+  transform: translateY(0.06em);
+  animation: caret-blink 1s steps(1) infinite;
+}
+
+@keyframes caret-blink {
+  50% {
+    opacity: 0;
+  }
 }
 
 .hero {
@@ -185,6 +224,13 @@
   align-items: center;
   justify-content: flex-end;
   height: 100dvh;
+  max-width: 100dvw;
+}
+
+.portrait-stack {
+  position: relative;
+  height: 100%;
+  width: auto;
   max-width: 100dvw;
 }
 
@@ -202,27 +248,42 @@
   filter: drop-shadow(0 18px 36px rgba(var(--shadow), 0.55));
 }
 
+.portrait-torch {
+  position: absolute;
+  inset: 0;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: 100% 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 120ms ease;
+}
+
 .cutout {
   position: absolute;
   top: 0;
   bottom: 0;
   z-index: 3;
-  width: min(38vw, 440px);
+  width: 50%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  padding: 0 1.6vw;
+  overflow: hidden;
   background: #000;
   pointer-events: none;
+  container-type: size;
   transition: transform 820ms var(--ease-out);
 }
 
 .cutout--right {
   right: 0;
+  justify-content: flex-end;
   transform: translateX(105%);
 }
 
 .cutout--left {
   left: 0;
+  justify-content: flex-start;
   transform: translateX(-105%);
 }
 
@@ -232,22 +293,39 @@
 
 .cutout-title {
   margin: 0;
+  width: max-content;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: inherit;
   color: #fff;
-  font-family: Oswald, 'Arial Narrow', Impact, sans-serif;
-  font-weight: 700;
-  font-size: clamp(28px, 4.6vw, 58px);
-  line-height: 0.92;
-  letter-spacing: 0.04em;
+  font-family: Tourney, 'Arial Black', Impact, sans-serif;
+  font-weight: 900;
+  font-stretch: condensed;
+  font-size: 100px;
+  line-height: 0.76;
+  letter-spacing: -0.04em;
   text-transform: uppercase;
-  text-align: center;
+  text-align: inherit;
+  white-space: nowrap;
   opacity: 0;
   transform: translateY(12px);
   transition:
     opacity 380ms ease,
     transform 480ms var(--ease-out);
+}
+
+.cutout--left .cutout-title {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.cutout--right .cutout-title {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.cutout-title span {
+  display: block;
 }
 
 .cutout.is-in .cutout-title {
