@@ -13,11 +13,6 @@ const MODES = [
 const MODE_UNITS = [1, 2, 2, 2, 1]
 const MODE_TOTAL = MODE_UNITS.reduce((sum, unit) => sum + unit, 0)
 
-const CUTOUTS = {
-  1: { side: 'right', lines: ['software', 'engineer'] },
-  3: { side: 'left', lines: ['game', 'designer'] },
-}
-
 function themeFor(mode) {
   if (mode === 1 || mode === 3) return 'blue'
   return 'red'
@@ -34,26 +29,36 @@ function thumbVars(index) {
 
 function App() {
   const [mode, setMode] = useState(2)
-  const cutout = CUTOUTS[mode]
   const theme = themeFor(mode)
 
   return (
-    <main className="stage" data-theme={theme}>
-      {theme === 'red' && (
-        <h1 className="wordmark" aria-label="jckawin">
-          jckawin
-        </h1>
-      )}
+    <main className="stage" data-theme={theme} data-mode={mode}>
+      <h1
+        className={`wordmark${theme === 'red' ? ' is-in' : ''}`}
+        aria-hidden={theme !== 'red'}
+      >
+        jckawin
+      </h1>
 
-      {cutout && (
-        <aside className={`cutout cutout--${cutout.side}`}>
-          <p className="cutout-title">
-            {cutout.lines.map((line) => (
-              <span key={line}>{line}</span>
-            ))}
-          </p>
-        </aside>
-      )}
+      <aside
+        className={`cutout cutout--right${mode === 1 ? ' is-in' : ''}`}
+        aria-hidden={mode !== 1}
+      >
+        <p className="cutout-title">
+          <span>software</span>
+          <span>engineer</span>
+        </p>
+      </aside>
+
+      <aside
+        className={`cutout cutout--left${mode === 3 ? ' is-in' : ''}`}
+        aria-hidden={mode !== 3}
+      >
+        <p className="cutout-title">
+          <span>game</span>
+          <span>designer</span>
+        </p>
+      </aside>
 
       <div className="hero">
         <img src={portrait} alt="" className="portrait" />
