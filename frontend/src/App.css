@@ -1,0 +1,117 @@
+.stage {
+  --void: #050203;
+  --ember: #8a0d16;
+  --blood: #c4141e;
+  --hot: #e6222c;
+
+  position: relative;
+  width: 100dvw;
+  height: 100dvh;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  isolation: isolate;
+  background: linear-gradient(
+    180deg,
+    var(--void) 0%,
+    #0a0203 22%,
+    #1a0406 48%,
+    #4a0810 72%,
+    var(--ember) 88%,
+    var(--blood) 100%
+  );
+}
+
+.stage::before,
+.stage::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Floor wash — the red that the figure stands in */
+.stage::before {
+  background:
+    radial-gradient(
+      ellipse 120% 55% at 50% 112%,
+      rgba(230, 34, 44, 0.85) 0%,
+      rgba(180, 16, 26, 0.45) 38%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 50% 28% at 50% 100%,
+      rgba(255, 70, 60, 0.35) 0%,
+      transparent 62%
+    );
+  animation: ember-breathe 7s ease-in-out infinite;
+}
+
+/* Slow living haze so the gradient never sits still */
+.stage::after {
+  background:
+    radial-gradient(
+      ellipse 70% 40% at 50% 0%,
+      rgba(5, 2, 3, 0.85) 0%,
+      transparent 68%
+    ),
+    radial-gradient(
+      ellipse 40% 50% at 18% 70%,
+      rgba(90, 8, 14, 0.22) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 38% 48% at 82% 68%,
+      rgba(90, 8, 14, 0.18) 0%,
+      transparent 70%
+    );
+  animation: haze-drift 16s ease-in-out infinite alternate;
+}
+
+.portrait {
+  position: relative;
+  z-index: 1;
+  display: block;
+  min-width: 0;
+  min-height: 0;
+  height: 85dvh;
+  width: auto;
+  max-width: 90dvw;
+  object-fit: contain;
+  object-position: center bottom;
+  user-select: none;
+  pointer-events: none;
+  filter: drop-shadow(0 18px 36px rgba(90, 4, 8, 0.55));
+}
+
+@keyframes ember-breathe {
+  0%,
+  100% {
+    opacity: 0.82;
+    transform: scaleY(1) translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleY(1.08) translateY(-1.5%);
+  }
+}
+
+@keyframes haze-drift {
+  0% {
+    opacity: 0.75;
+    transform: translate3d(-1.5%, 0, 0) scale(1.04);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(1.5%, -1%, 0) scale(1.08);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stage::before,
+  .stage::after {
+    animation: none;
+  }
+}
